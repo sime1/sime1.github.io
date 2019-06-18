@@ -1,0 +1,78 @@
+---
+layout: about
+---
+<div class="columns">
+  <div class="column tile is-ancestor">
+    <div class="tile is-parent is-vertical">
+      <h1 class="title">Work Experience</h1>
+      {% for job in page.work_experience %}
+      <div class="card tile is-child job">
+        <div class="card-header">
+          <div class="card-header-title wrap">
+            <h2>{{job.job}} @ {{job.employer}}</h1>
+              <p class="is-size-7">
+                <span>{{job.start_date | date: "%b %d, %Y"}}</span>
+                to <span>{{job.end_date | date: "%b %d, %Y" | default: "present date"}}</span>
+              </p>
+          </div>
+        </div>
+        <div class="card-content content">
+          {{job.description}}
+        </div>
+      </div>
+      {% endfor %}
+      <h1 class="title">Education</h1>
+      {% for ed in page.education %}
+      <div class="card tile is-child education">
+        <div class="card-header">
+          <div class="card-header-title wrap">
+            <h2>{{ed.title}} @ {{ed.institution}}</h1>
+              <p class="is-size-7">
+                <span>{{ed.start_date | date: "%b %d, %Y"}}</span>
+                to <span>{{ed.end_date | date: "%b %d, %Y" | default: "present date"}}</span>
+              </p>
+          </div>
+        </div>
+        <div class="card-content content">
+          {{ed.description}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div id="skills" class="column tile is-ancestor">
+    <div class="tile is-parent is-vertical">
+      <h1 class="title">Skills</h1>
+      {% for category in page.skills %}
+        {% assign cat_name = category[0] %}
+        <div class="card tile is-child skills">
+          <div class="card-header">
+            <h2 class="card-header-title">{{cat_name}}</h2>
+          </div>
+          <div class="card-content">
+            <ul>
+            {% for skill in category[1] %}
+              <li>
+                <span>{{skill.name}}</span>
+                {% if skill.experience %}
+                  {% assign confidence = skill.experience | divided_by: 25 %}
+                  {% case confidence %}
+                    {% when 4 %}
+                      <progress class="progress is-success" value="{{skill.experience}}" max="100">{{skill.experience}}</progress>
+                      {% when 3 %}
+                      <progress class="progress is-success" value="{{skill.experience}}" max="100">{{skill.experience}}</progress>
+                      {% when 2 %}
+                      <progress class="progress is-warning" value="{{skill.experience}}" max="100">{{skill.experience}}</progress>
+                      {% else %}
+                      <progress class="progress is-danger" value="{{skill.experience}}" max="100">{{skill.experience}}</progress>
+                  {% endcase %}
+                {% endif %}
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

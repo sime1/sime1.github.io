@@ -1,0 +1,27 @@
+
+  // dark-mode overrides
+  $white-ter:        hsl(0, 0%, 4%);
+  $white-bis:    hsl(0, 0%, 7%);
+  $white:    hsl(0, 0%, 14%);
+
+  $grey-lighter:  hsl(0, 0%, 21%);
+  $grey-light:    hsl(0, 0%, 29%);
+  $grey:         hsl(0, 0%, 48%);
+  $grey-dark:   hsl(0, 0%, 71%);
+  $grey-darker: hsl(0, 0%, 86%);
+
+  $black:    hsl(0, 0%, 96%);
+  $black-bis:    hsl(0, 0%, 98%);
+  $black-ter:        hsl(0, 0%, 100%);
+
+  $body-background-color: $white-bis;
+  $pre-background: #272822;
+  $code-background: #272822;
+  $text-strong: $grey-darker;
+  $text: $grey-dark;
+  $title-color: $grey-dark;
+  $navbar-item-color: $grey-dark;
+
+@import "node_modules/bulma/sass/utilities/_all.sass";
+$link: $green;
+@import "node_modules/bulma/bulma"

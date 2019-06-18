@@ -1,0 +1,33 @@
+<div class="card">
+    {% assign title = page.profile_title | default: layout.profile_title | default: "Bio" %}
+    {% if title %}
+    <div class="card-header">
+      <div class="card-header-title">{{title}}</div>
+    </div>
+    {% endif%}
+    <div class="card-image">
+      <img src="{{site.proflie_pic | default: "assets/images/mugshot.jpg" | relative_url}}" />
+    </div>
+    <div class="card-content">
+      <div class="content">
+        {{ page.bio | default: layout.bio | default: site.description }}
+      </div>
+      {% for social in site.social %}
+        {% capture base_url %}
+          {% if social.base_url%}
+            {{social.base_url}}
+          {% else %}
+            http://{{social.name}}.com/
+          {% endif %}
+        {% endcapture %}
+        {% assign url = base_url | strip | append: social.username %}
+        {% assign icon_family = social.icon_family | default: "fab" %}
+        {% assign user = social.username %}
+        {% assign icon = social.icon | default: social.name %}
+        <div>
+          <i class="is-size-4 fa-fw {{icon_family}} fa-{{icon}}"></i>
+          <a href="{{url}}">{{user}}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>

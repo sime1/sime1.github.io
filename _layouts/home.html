@@ -1,0 +1,32 @@
+---
+layout: about
+---
+<section class="content">
+  {% for post in site.posts limit: 6 %}
+    {% assign even = forloop.index | modulo: 2 %}
+    {% if even == 1 %}
+    <div class="tile is-ancestor">
+    {% endif %}
+      {% assign link = post.url | relative_url %}
+      <div class="tile is-parent is-6">
+        <div class="tile is-child card">
+          <div class="post">
+            <div class="card-header">
+              <h1 class="card-header-title title is-5">
+                <a href="{{link}}">{{post.title}}</a>
+              </h1>
+            </div>
+            <div class="card-content post">
+              <p class="content">{{post.excerpt}}</p>
+              <div class="has-text-right move-bottom">
+                <a class="move-bottom" href="{{link}}">More...</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% if even == 0 %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</section>
