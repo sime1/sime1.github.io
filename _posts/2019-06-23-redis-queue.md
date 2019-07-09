@@ -188,7 +188,7 @@ pushed.
 
 A few initial observations:
 
-1. The scripts can definetly be obtimized for production: for instance, the
+1. The scripts can definetly be optimized for production: for instance, the
    comments should be removed. The code is the way it is for the sake of
    clarity.
 2. It may seem strange to have two different scripts to insert requests into the
@@ -246,5 +246,5 @@ There is definetly space for improvement:
 
 That's it.
 
-Next time i will try to create a redis module that does the same thing. 
+Next time i will try to create a redis module that does the same thing.
 {% endraw %}
