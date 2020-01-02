@@ -16,9 +16,11 @@ layout: page
     </div>
     {% endfor %}
   </div>
-  <div class="container comment-form">
-    <div class="is-size-4">Post a comment:</div>
+  <div class="container comment-form" id="new-comment">
     <div class="box">
+      <div id="comment-sent" hidden>
+        Your comment has been submitted. Once it's approved, it will appear
+      </div>
       <form id="comment-form" class="container">
         <div class="field">
           <label class="label" for="author">Name: </label>
@@ -33,29 +35,47 @@ layout: page
         <input type="hidden" name="post" value="{{id}}"/>
         <input type="submit" value="Post Comment"/>
       </form>
+      <div hidden id="comment-progress">
+        <progress class="progress is-small" max="100" hidden></progress>
+      </div>
     </div>
   </div>
 </div>
 <script>
 const apiUrl = "https://pgij0a6et3.execute-api.us-east-1.amazonaws.com/Prod/comment"
 const form = document.getElementById("comment-form");
+const newComment = document.getElementById("new-comment")
+const progressBar = document.getElementById("comment-progress");
+const commentSent = document.getElementById("comment-sent");
+let enabled = true;
 function submitForm (ev) {
   ev.preventDefault();
-  const comment = {};
-  for(const el of this.elements) {
-    if(el.name != undefined && el.name!= "") {
-      comment[el.name] = el.value;
+  if(enabled) {
+    enabled = false;
+    const comment = {};
+    for(const el of this.elements) {
+      if(el.name != undefined && el.name!= "") {
+        comment[el.name] = el.value;
+      }
     }
+    progressBar.hidden = false;
+    fetch(apiUrl, {
+      method: "POST",
+      body: JSON.stringify(comment),
+      headers: {
+        'content-type': "application/json"
+      }
+    }).then(function(res) {
+      console.log(res);
+      form.parentNode.removeChild(form);
+      progressBar.hidden = true;
+      commentSent.hidden=false;
+    }).catch(function(err) {
+      console.log(err);
+      progressBar.hidden = true;
+      enabled = true;
+    });
   }
-  fetch(apiUrl, {
-    method: "POST",
-    body: JSON.stringify(comment),
-    headers: {
-      'content-type': "application/json"
-    }
-  }).then(function(res) {
-    console.log(res);
-  }).catch(console.log);
 }
 form.onsubmit = submitForm;
 </script>
