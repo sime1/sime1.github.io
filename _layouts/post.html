@@ -6,3 +6,56 @@ layout: page
 <div class="content">
   {{content}}
 </div>
+<div class="comment-section container">
+  <div class="comments">
+    {% assign id = page.path | split: "/" | last | split: "." | first %}
+    {% for comment in site.data.comments[id]%}
+    <div class="comment box">
+      <div class="comment-author">{{comment.author}}:</div>
+      <div class="comment-content">{{comment.content}}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="container comment-form">
+    <div class="is-size-4">Post a comment:</div>
+    <div class="box">
+      <form id="comment-form" class="container">
+        <div class="field">
+          <label class="label" for="author">Name: </label>
+          <div class="control">
+            <input name="author" id="author"/>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="comment-content">Comment:</label>
+          <textarea class="textarea" name="content" placeholder="Type your comment here..."></textarea>
+        </div>
+        <input type="hidden" name="post" value="{{id}}"/>
+        <input type="submit" value="Post Comment"/>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+const apiUrl = "https://pgij0a6et3.execute-api.us-east-1.amazonaws.com/Prod/comment"
+const form = document.getElementById("comment-form");
+function submitForm (ev) {
+  ev.preventDefault();
+  const comment = {};
+  for(const el of this.elements) {
+    if(el.name != undefined && el.name!= "") {
+      comment[el.name] = el.value;
+    }
+  }
+  fetch(apiUrl, {
+    method: "POST",
+    body: JSON.stringify(comment),
+    headers: {
+      'content-type': "application/json"
+    }
+  }).then(function(res) {
+    console.log(res);
+  }).catch(console.log);
+}
+form.onsubmit = submitForm;
+</script>
