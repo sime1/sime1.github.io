@@ -11,11 +11,11 @@ Hello, I'm Simeone Pizzi and this is my website.
 I'm an italian developer with some experience in distributed systems, Cloud
 services, NoSQL databases.
 
-I mostly program in either javascript (Node.js) or Go, and sometimes in C/C++,
+I mostly program in either Go or javascript (Node.js), and sometimes in C/C++,
 but I always like learning new programming languages.
 
-I'm passionate about Cloud Native applications, DevOps, Continuous Integration
-and Continuous Delivery.
+My interests range from Cloud Native applications, DevOps and Continuous
+Integration to embedded development and neural networks.
 
 I play the guitar, I like reading and going for walks, and I'm really bad at
 videogames.
