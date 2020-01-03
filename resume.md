@@ -4,6 +4,7 @@ title: Resume
 profile_title: Simeone Pizzi
 bio: > 
   I was born March 1st, 1995. I live in Padua (Italy).
+enable_image: true
 work_experience:
 - start_date: July 2, 2018
   employer: Pagination.com

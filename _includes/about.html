@@ -5,9 +5,11 @@
       <div class="card-header-title">{{title}}</div>
     </div>
     {% endif%}
+    {% if page.enable_image %}
     <div class="card-image">
       <img src="{{site.proflie_pic | default: "assets/images/mugshot.jpg" | relative_url}}" />
     </div>
+    {% endif %}
     <div class="card-content">
       <div class="content">
         {{ page.bio | default: layout.bio | default: site.description }}
