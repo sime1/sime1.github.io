@@ -7,6 +7,7 @@ bio: >
 enable_image: true
 work_experience:
 - start_date: July 2, 2018
+  end_date: September 20, 2019
   employer: Pagination.com
   job: Backend Developer/DevOps
   description: >
@@ -30,6 +31,12 @@ work_experience:
     I was able to have a work experience abroad thanks to the Leonardo Da Vinci
     programme from the European Commision.
 education:
+- start_date: 01/10/2019
+  institution: Università di Padova (University of Padua)
+  title: Laurea Magistrale in Informatica (Master of Computer Science)
+  description: >
+    I decided to pursue a Master's degree in Computer Science to study advanced
+    topics in Secure Systems and Artificial Intelligence
 - start_date: 01/10/2014
   end_date: 19/07/2018
   institution: Università di Padova (University of Padua)
