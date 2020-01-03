@@ -31,4 +31,6 @@ div.comment-content {
 div.comment-form {
   margin-top: 1.5rem;
 }
+@import "node_modules/bulma/sass/utilities/_all.sass";
+$link: $green;
 @import "common.scss";
