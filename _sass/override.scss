@@ -21,7 +21,6 @@
   $text: $grey-dark;
   $title-color: $grey-dark;
   $navbar-item-color: $grey-dark;
-  $body-family: 'Courier Prime', monospace;
 
 div.comment-author {
   font-weight:bold;
@@ -32,6 +31,4 @@ div.comment-content {
 div.comment-form {
   margin-top: 1.5rem;
 }
-@import "node_modules/bulma/sass/utilities/_all.sass";
-$link: $green;
-@import "node_modules/bulma/bulma"
+@import "common.scss";
